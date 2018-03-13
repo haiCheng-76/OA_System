@@ -22,7 +22,7 @@ public class EmployeeTest {
 
 	@Test
 	public void testIsUser() {
-		boolean hasuser = employeeService.getuserByUPR("6", "555", 0);
+		boolean hasuser = employeeService.getuserByUPR("890", "7987", 0);
 		assertEquals(true, hasuser);
 	}
 
@@ -39,7 +39,7 @@ public class EmployeeTest {
 	@Test
 	public void testDeleteEmployee() {
 		Employee e = new Employee();
-		e.setEmployee_id(10);
+		e.setEmployee_id(7);
 		boolean isdelete = employeeService.deleteEmployee(e);
 		assertEquals(true, isdelete);
 	}

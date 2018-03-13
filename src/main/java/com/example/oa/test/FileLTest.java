@@ -11,8 +11,7 @@ import com.example.oa.domain.File;
 import com.example.oa.service.FileService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath*:root-context.xml",
-"classpath*:servlet-context.xml" })
+@ContextConfiguration(locations = { "classpath*:root-context.xml", "classpath*:servlet-context.xml" })
 public class FileLTest {
 	@Autowired
 	private FileService fileService;
@@ -20,7 +19,6 @@ public class FileLTest {
 	@Test
 	public void testGetallFileInfo() {
 		List<File> listfile = fileService.getallFile();
-		System.out.println(listfile.size());
 		assertEquals(5, listfile.size());
 	}
 
