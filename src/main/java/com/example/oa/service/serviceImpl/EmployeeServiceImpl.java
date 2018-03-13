@@ -1,4 +1,4 @@
-package com.example.oa.serviceImpl;
+package com.example.oa.service.serviceImpl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

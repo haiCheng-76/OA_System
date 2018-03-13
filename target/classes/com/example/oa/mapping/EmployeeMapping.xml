@@ -52,23 +52,9 @@
 	</select>
 	<select id="getallEmployee" resultMap="employeeInfo">
 		SELECT
-		employee_id,
-		employee_account,
-		username,
-		PASSWORD,
-		age,
-		address,
-		rolename,
-		departmentname
-		FROM
-		employee,
-		user_role,
-		department
-		WHERE
-		user_role.roleid =
-		employee.roleid
-		AND
-		department.departmentid = employee.departmentid;
+		e.employee_account,e.username,e.`password`,e.age,e.address,d.departmentname,e.role
+		FROM employee e,department d
+		WHERE e.departmentid=d.departmentid;
 	</select>
 
 	<select id="getuserByUPR" parameterType="com.example.oa.domain.Employee"
