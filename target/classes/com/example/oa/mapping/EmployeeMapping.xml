@@ -14,14 +14,14 @@
 	<insert id="addEmployee" parameterType="com.example.oa.domain.Employee">
 		INSERT INTO employee
 		(employee_account, username, password, age, address,
-		roleid,
+		role,
 		departmentid) VALUES (#{employee_account}, #{username}, #{password},
 		#{age},
-		#{address}, #{roleid}, #{departmentid})
+		#{address}, #{role}, #{departmentid})
 	</insert>
 	<update id="updateEmployee" parameterType="com.example.oa.domain.Employee">
 		update employee set
-		employee_account=#{employee_account},username=#{username},password=#{password},age=#{age},address=#{address},roleid=#{roleid},departmentid=#{departmentid}
+		employee_account=#{employee_account},username=#{username},password=#{password},age=#{age},address=#{address},role=#{role},departmentid=#{departmentid}
 		where employee_id=#{employee_id}
 	</update>
 	<delete id="deleteEmployee" parameterType="com.example.oa.domain.Employee">
@@ -31,28 +31,13 @@
 	<select id="selectEmployeeById" parameterType="java.lang.Integer"
 		resultMap="employeeInfo">
 		SELECT
-		employee_id,
-		employee_account,
-		username,
-		PASSWORD,
-		age,
-		address,
-		rolename,
-		departmentname
-		FROM
-		employee,
-		user_role,
-		department
-		WHERE
-		user_role.roleid =
-		employee.roleid
-		AND department.departmentid =
-		employee.departmentid and
-		employee_id=#{employee_id};
+		e.employee_account,e.employee_id,e.username,e.`password`,e.age,e.address,d.departmentname,e.role
+		FROM employee e,department d
+		WHERE e.departmentid=d.departmentid and e.employee_id=#{employee_id}
 	</select>
 	<select id="getallEmployee" resultMap="employeeInfo">
 		SELECT
-		e.employee_account,e.username,e.`password`,e.age,e.address,d.departmentname,e.role
+		e.employee_id,e.employee_account,e.username,e.`password`,e.age,e.address,d.departmentname,e.role
 		FROM employee e,department d
 		WHERE e.departmentid=d.departmentid;
 	</select>

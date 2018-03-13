@@ -6,6 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		<!-- Spring MVC配置文件 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<context:component-scan base-package="com.example.oa.service"/>
 	<!-- <beans:bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"> 
