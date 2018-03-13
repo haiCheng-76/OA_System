@@ -39,7 +39,6 @@ public class FileServiceImpl implements FileService {
 	@Override
 	public List<File> getallFile() {
 		List<File> llistfile = fileDao.getallFile();
-		System.out.println(llistfile);
 		return llistfile;
 	}
 
