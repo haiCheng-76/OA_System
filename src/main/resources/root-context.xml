@@ -33,7 +33,9 @@
 		<property name="basePackage" value="com.example.oa.dao" />
 		<property name="sqlSessionFactoryBeanName" value="SqlSessionFactory" />
 	</bean>
-	<bean id="transactionmanager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="DateSource"/>
+	<!-- 配置事务 -->
+	<bean id="transactionmanager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="DateSource" />
 	</bean>
 </beans>
