@@ -16,5 +16,6 @@ public interface EmployeeService {
 	List<Employee> getallEmployee();
 
 	boolean getuserByUPR(String account, String password, int role);
+
 	boolean updatePassword(Employee e);
 }

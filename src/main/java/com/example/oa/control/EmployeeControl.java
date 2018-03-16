@@ -9,17 +9,16 @@ import com.example.oa.domain.Employee;
 import com.example.oa.service.EmployeeService;
 
 @Controller
-@RequestMapping(value = "/login")
+@RequestMapping(value = "/employeeControl")
 public class EmployeeControl {
 	@Autowired
 	private EmployeeService employeeService;
 
-	@RequestMapping(value = "/isuer.htm")
+	@RequestMapping(value = "/isuer")
 	@ResponseBody
 	public String isUser(String account, String password, int role) {
 		String str = "";
 		boolean hasuser = employeeService.getuserByUPR(account, password, role);
-		System.out.println(hasuser);
 		if (hasuser) {
 			str = "success";
 		} else {

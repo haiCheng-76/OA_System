@@ -5,11 +5,11 @@ import java.util.List;
 import com.example.oa.domain.Device;
 
 public interface DeviceDao {
-	boolean addDevice(Device device);
+	int addDevice(Device device);
 
-	boolean updateDevice(Device device);
+	int updateDevice(Device device);
 
-	boolean deleteDevice(Device device);
+	int deleteDevice(Device device);
 
 	Device selectDeviceById(int id);
 

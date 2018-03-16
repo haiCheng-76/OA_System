@@ -86,7 +86,7 @@
 						<option value="0">用户</option>
 					</select>
 					<button type="button" class="button btn btn-success btn-large"
-						onclick="getall()">登陆</button>
+						onclick="login()">登陆</button>
 
 				</div>
 				<!-- .actions -->
@@ -113,34 +113,27 @@
 	<script src="${ctx}/assets/js/bootstrap.js"></script>
 	<script src="${ctx}/assets/js/signin.js"></script>
 	<script type="text/javascript">
-		/* 		function tijiao() {
-		 var account = $("#account").val();
-		 var password = $("#password").val();
-		 var role = $("#role").val();
-		 $.ajax({
-		 url : '${ctx}/login/isuer.htm',
-		 type : 'POST',
-		 data : {
-		 account : account,
-		 password : password,
-		 role : role
-		 },
-		 success : function(data) {
-		 if(data == "success") {
-		 alert("成功");
-		 }
-		 if (data == "error"){
-		 alert("失败");
-		 }
-		 },
-		 });
-		 } */
-		function getall() {
+		var account = $("#account").val();
+		var password = $("#password").val();
+		var role = $("#role").val();
+		function login() {
 			$.ajax({
-				url : '${ctx}/fileControl/getallFileInfo.htm',
-				type : 'POST',
+				url : "${ctx}/employeeControl/isuer",
+				type : "POST",
+				data : {
+					account : account,
+					password : password,
+					role : role
+				},
 				success : function(data) {
-					console.log(data);
+					if (data == "success") {
+						window.location.href = "";
+					} else{
+						alert("请正确输入！");
+					}
+				},
+				error : function (data) {
+					alert("系统错误");
 				}
 			});
 		}

@@ -5,11 +5,11 @@ import java.util.List;
 import com.example.oa.domain.CarInfo;
 
 public interface CarInfoDao {
-	boolean addCarInfo(CarInfo carInfo);
+	int addCarInfo(CarInfo carInfo);
 
-	boolean updateCarInfo(CarInfo carInfo);
+	int updateCarInfo(CarInfo carInfo);
 
-	boolean deleteCarInfo(CarInfo carInfo);
+	int deleteCarInfo(CarInfo carInfo);
 
 	CarInfo selectCarInfoById(int id);
 
