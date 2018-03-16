@@ -11,7 +11,7 @@ public interface DeviceDao {
 
 	int deleteDevice(Device device);
 
-	Device selectDeviceById(int id);
+	Device selectDeviceById(Integer id);
 
 	List<Device> getallDevice();
 }

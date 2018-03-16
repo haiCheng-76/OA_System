@@ -11,7 +11,7 @@ public interface DepartmentDao {
 
 	int deleteDepartment(Department department);
 
-	Department selectDepartmentById(int id);
+	Department selectDepartmentById(Integer id);
 
 	List<Department> getallDepartment();
 }

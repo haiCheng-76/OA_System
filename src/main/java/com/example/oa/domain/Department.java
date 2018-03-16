@@ -9,10 +9,33 @@ package com.example.oa.domain;
 public class Department {
 	private int departmentid;
 	private String departmentname;
+	private String departmenttelephone;
+	private String departmentaddress;
 
-	public Department(int departmentid, String departmentname) {
+	public Department() {
+	}
+
+	public Department(int departmentid, String departmentname, String departmenttelephone, String departmentaddress) {
 		this.departmentid = departmentid;
 		this.departmentname = departmentname;
+		this.departmenttelephone = departmenttelephone;
+		this.departmentaddress = departmentaddress;
+	}
+
+	public String getDepartmenttelephone() {
+		return departmenttelephone;
+	}
+
+	public void setDepartmenttelephone(String departmenttelephone) {
+		this.departmenttelephone = departmenttelephone;
+	}
+
+	public String getDepartmentaddress() {
+		return departmentaddress;
+	}
+
+	public void setDepartmentaddress(String departmentaddress) {
+		this.departmentaddress = departmentaddress;
 	}
 
 	public int getDepartmentid() {

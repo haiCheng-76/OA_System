@@ -1,8 +1,8 @@
 package com.example.oa.domain;
 
-
 /**
  * 设备信息表
+ * 
  * @author 龙海成
  *
  */
@@ -12,8 +12,10 @@ public class Device {
 	private double deviceprice;
 	private int devicenumber;
 
-	public Device(int deviceid, String devicename, double deviceprice, int devicenumber) {
-		this.deviceid = deviceid;
+	public Device() {
+	}
+
+	public Device(String devicename, double deviceprice, int devicenumber) {
 		this.devicename = devicename;
 		this.deviceprice = deviceprice;
 		this.devicenumber = devicenumber;

@@ -11,7 +11,7 @@ public interface CarInfoDao {
 
 	int deleteCarInfo(CarInfo carInfo);
 
-	CarInfo selectCarInfoById(int id);
+	CarInfo selectCarInfoById(Integer id);
 
 	List<CarInfo> getallCarInfo();
 }
