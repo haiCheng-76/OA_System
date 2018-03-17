@@ -1,7 +1,5 @@
 package com.example.oa.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,22 +31,28 @@ public class Devicetest {
 
 	@Test
 	public void testUpdateDevice() {
-		fail("Not yet implemented");
+		Device device = new Device();
+		device.setDevicename("张三");
+		device.setDevicenumber(45);
+		device.setDeviceprice(33.0);
+		deviceService.updateDevice(device);
 	}
 
 	@Test
 	public void testDeleteDevice() {
-		fail("Not yet implemented");
+		Device device = new Device();
+		device.setDeviceid(1);
+		deviceService.deleteDevice(device);
 	}
 
 	@Test
 	public void testSelectDeviceById() {
-		fail("Not yet implemented");
+		deviceService.selectDeviceById(1);
 	}
 
 	@Test
 	public void testGetallDevice() {
-		fail("Not yet implemented");
+		deviceService.getallDevice();
 	}
 
 }
