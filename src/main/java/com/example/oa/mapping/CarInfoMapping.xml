@@ -7,19 +7,20 @@
 		values(#{carname},#{carnumber},#{carprice})
 	</insert>
 	<update id="updateCarInfo" parameterType="com.example.oa.domain.CarInfo">
-		update set carinfo
-		carname=#{carname},carnumber=#{carnumber},carprice=#{carprice} where
-		carid=#{carid}
+		UPDATE carinfo c set c.carname=#{carname},c.carnumber=#{carnumber},c.carprice=#{carprice} WHERE
+		c.carid=#{carid}
 	</update>
 	<delete id="deleteCarInfo" parameterType="com.example.oa.domain.CarInfo">
 		delete from carinfo
 		where carid=#{carid}
 	</delete>
-	<select id="selectCarInfoById" parameterType="java.lang.Integer" resultType="com.example.oa.domain.CarInfo">
+	<select id="selectCarInfoById" parameterType="java.lang.Integer"
+		resultType="com.example.oa.domain.CarInfo">
 		SELECT
 		carid,carname,carnumber,carprice
 		FROM carinfo
-		WHERE carid=#{id}
+		WHERE
+		carid=#{id}
 	</select>
 	<select id="getallCarInfo" resultType="com.example.oa.domain.CarInfo">
 		SELECT

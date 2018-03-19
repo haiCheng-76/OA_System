@@ -12,6 +12,9 @@ public class CarInfo {
 	private String carnumber;// 车牌号
 	private double carprice;
 
+	public CarInfo() {
+	}
+
 	public CarInfo(int carid, String carname, String carnumber, double carprice) {
 		this.carid = carid;
 		this.carname = carname;

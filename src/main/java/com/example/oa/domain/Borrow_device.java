@@ -14,6 +14,9 @@ public class Borrow_device {
 	private int employeeid;
 	private Date borrow_device_date;
 
+	public Borrow_device() {
+	}
+
 	public Borrow_device(int borrow_device_id, int borrow_device_deviceid, int employeeid, Date borrow_device_date) {
 		this.borrow_device_id = borrow_device_id;
 		this.borrow_device_deviceid = borrow_device_deviceid;

@@ -1,9 +1,8 @@
 package com.example.oa.service.serviceImpl;
 
 import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.oa.dao.Borrow_CarDao;
 import com.example.oa.domain.Borrow_car;
 import com.example.oa.service.BorrowCarService;
@@ -11,7 +10,7 @@ import com.example.oa.service.BorrowCarService;
 
 @Service
 public class BorrowCarServiceImpl implements BorrowCarService {
-	
+	@Autowired
 	private Borrow_CarDao borrowCarDao;
 
 	@Override
