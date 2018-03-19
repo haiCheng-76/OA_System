@@ -1,6 +1,7 @@
 package com.example.oa.control;
 
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,12 +12,14 @@ import com.example.oa.service.EmployeeService;
 @Controller
 @RequestMapping(value = "/employeeControl")
 public class EmployeeControl {
+	private Logger log  = Logger.getLogger(EmployeeControl.class);
 	@Autowired
 	private EmployeeService employeeService;
 
 	@RequestMapping(value = "/isuer")
 	@ResponseBody
 	public String isUser(String account, String password, int role) {
+		log.info("账号:"+account+"密码："+password+";角色："+role);
 		String str = "";
 		boolean hasuser = employeeService.getuserByUPR(account, password, role);
 		if (hasuser) {

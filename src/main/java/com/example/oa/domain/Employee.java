@@ -13,7 +13,6 @@ public class Employee {
 	private String password;
 	private int age;
 	private String address;
-	private int roleid;
 	private int departmentid;
 	private int role;
 
@@ -28,16 +27,15 @@ public class Employee {
 	public Employee() {
 	}
 
-	public Employee(int employee_id, String employee_account, String username, String password, int age, String address,
-			int roleid, int departmentid) {
-		this.employee_id = employee_id;
+	public Employee(String employee_account, String username, String password, int age, String address,
+			int departmentid, int role) {
 		this.employee_account = employee_account;
 		this.username = username;
 		this.password = password;
 		this.age = age;
 		this.address = address;
-		this.roleid = roleid;
 		this.departmentid = departmentid;
+		this.role = role;
 	}
 
 	public int getEmployee_id() {
@@ -86,14 +84,6 @@ public class Employee {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public int getRoleid() {
-		return roleid;
-	}
-
-	public void setRoleid(int roleid) {
-		this.roleid = roleid;
 	}
 
 	public int getDepartmentid() {

@@ -107,16 +107,14 @@
 		<h3 class="msg"></h3>
 	</div>
 	<!-- /login-extra -->
-
-
 	<script src="${ctx}/assets/js/jquery-1.7.2.min.js"></script>
 	<script src="${ctx}/assets/js/bootstrap.js"></script>
 	<script src="${ctx}/assets/js/signin.js"></script>
 	<script type="text/javascript">
-		var account = $("#account").val();
-		var password = $("#password").val();
-		var role = $("#role").val();
 		function login() {
+		var account = $("#account").val().trim();
+		var password = $("#password").val().trim();
+		var role = $("#role").val();
 			$.ajax({
 				url : "${ctx}/employeeControl/isuer",
 				type : "POST",
@@ -126,13 +124,15 @@
 					role : role
 				},
 				success : function(data) {
+					console.log(data)
 					if (data == "success") {
-						window.location.href = "";
-					} else{
+						window.location.href = "${ctx}/pageControl/tomainpage.htm";
+					}
+					if (data == "error") {
 						alert("请正确输入！");
 					}
 				},
-				error : function (data) {
+				error : function(data) {
 					alert("系统错误");
 				}
 			});

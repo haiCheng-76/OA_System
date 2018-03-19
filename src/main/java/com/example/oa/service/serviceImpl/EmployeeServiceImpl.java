@@ -1,6 +1,7 @@
 package com.example.oa.service.serviceImpl;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.oa.dao.EmployeeDao;
@@ -49,7 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		Employee e = new Employee();
 		e.setEmployee_account(account);
 		e.setPassword(password);
-		e.setRoleid(role);
+		e.setRole(role);
 		int hasusernum = employeeDao.getuserByUPR(e);
 		return hasusernum == 1 ? true : false;
 	}
