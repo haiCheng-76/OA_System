@@ -17,11 +17,11 @@
 <link href="${ctx}/assets/css/bootstrap-responsive.min.css"
 	rel="stylesheet" type="text/css" />
 
-<link href="${ctx}/assets/css/font-awesome.css" rel="stylesheet">
+<link href="${ctx}/assets/css/font-awesome.min.css" rel="stylesheet">
 
 <link href="${ctx}/assets/css/style.css" rel="stylesheet"
 	type="text/css">
-<link href="${ctx}/assets/css/pages/signin.css" rel="stylesheet"
+<link href="${ctx}/assets/css/signin.css" rel="stylesheet"
 	type="text/css">
 
 </head>
