@@ -22,8 +22,7 @@
 <body>
 	<jsp:include page="/Top.jsp"></jsp:include>
 	<table id="listEmployee"
-		class="table table-border table-hover table-bg table-sort"
-		width="95%">
+		class="table table-border table-hover table-bg table-sort" width="95%">
 		<thead>
 			<tr>
 				<th></th>
@@ -40,7 +39,42 @@
 	</table>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#listEmployee').DataTable();
+			$('#listEmployee').DataTable({
+				paging : false,
+				scrolly : 500,
+				sAjaxDataProp : "",
+				ajax : {
+					//指定数据源
+					url : "${ctx}/employeeControl/getallEmoloyee"
+				},
+				columns : [ {
+					"data" : ""
+				}, {
+					"data" : "employee_id"
+				}, {
+					"data" : "username"
+				}, {
+					"data" : "age"
+				}, {
+					"data" : "departmentName"
+				}, {
+					"data" : "role"
+				}, ],
+				columnDefs : [{
+					targets : 5,
+					render : function(data, type, row, meta) {
+						if(data == 1) {
+							return "管理员"
+						} else {
+							return "普通员工"
+						}
+					}
+				},{
+					targets : -1,
+					render : function (data,type,row,meta) {
+						return "<a href="javascript:;" onClick="show()" title="查看"></a>";					}
+				}],
+			});
 		});
 	</script>
 </body>

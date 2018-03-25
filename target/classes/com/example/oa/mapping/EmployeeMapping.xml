@@ -9,6 +9,7 @@
 		<result property="age" column="age" />
 		<result property="address" column="address" />
 		<result property="roleid" column="roleid" />
+		<result property="departmentName" column="departmentname"/>
 		<result property="departmentid" column="departmentid" />
 	</resultMap>
 	<insert id="addEmployee" parameterType="com.example.oa.domain.Employee">
@@ -38,9 +39,9 @@
 	</select>
 	<select id="getallEmployee" resultMap="employeeInfo">
 		SELECT
-		e.employee_id,e.employee_account,e.username,e.`password`,e.age,e.address,d.departmentname,e.role
+		e.employee_id,e.employee_account,e.username,e.`password`,d.departmentname,e.age,e.address,e.role
 		FROM employee e,department d
-		WHERE e.departmentid=d.departmentid;
+		where e.departmentid=d.departmentid
 	</select>
 
 	<select id="getuserByUPR" parameterType="com.example.oa.domain.Employee"
@@ -51,7 +52,8 @@
 		employee
 		WHERE
 		role = #{role}
-		AND employee_account = #{employee_account}
+		ANDd
+		employee_account = #{employee_account}
 		AND PASSWORD = #{password};
 	</select>
 	<update id="forgetPassword" parameterType="com.example.oa.domain.Employee">

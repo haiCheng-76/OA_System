@@ -1,6 +1,8 @@
 package com.example.oa.control;
 
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +21,7 @@ public class EmployeeControl {
 	@RequestMapping(value = "/isuer")
 	@ResponseBody
 	public String isUser(String account, String password, int role) {
-		log.info("账号:"+account+"密码："+password+";角色："+role);
+		log.info("璐﹀彿:"+account+"瀵嗙爜锛�"+password+";瑙掕壊锛�"+role);
 		String str = "";
 		boolean hasuser = employeeService.getuserByUPR(account, password, role);
 		if (hasuser) {
@@ -69,5 +71,10 @@ public class EmployeeControl {
 			msg = "";
 		}
 		return msg;
+	}
+	@RequestMapping(value = "/getallEmoloyee")
+	@ResponseBody
+	public List<Employee> getallEmoloyee() {
+		return employeeService.getallEmployee();
 	}
 }

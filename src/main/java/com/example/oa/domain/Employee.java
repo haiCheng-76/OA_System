@@ -15,6 +15,15 @@ public class Employee {
 	private String address;
 	private int departmentid;
 	private int role;
+	private String departmentName;
+
+	public String getDepartmentName() {
+		return departmentName;
+	}
+
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
 
 	public int getRole() {
 		return role;
