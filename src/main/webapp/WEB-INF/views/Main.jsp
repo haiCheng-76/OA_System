@@ -21,27 +21,6 @@
 </head>
 <body>
 	<jsp:include page="/Top.jsp"></jsp:include>
-	<table id="mytable"
-		class="table table-border table-hover table-bg table-sort"
-		width="95%">
-		<thead>
-			<tr>
-				<th></th>
-				<th class="htz">标题</th>
-				<th class="htz">内容</th>
-				<th class="htz">类型</th>
-				<th class="htz">推送类型</th>
-				<th class="htz">生成时间</th>
-				<th class="htz">操作</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#mytable').DataTable();
-		});
-	</script>
+	<h1>这里是主页</h1>
 </body>
 </html>

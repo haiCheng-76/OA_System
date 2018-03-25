@@ -15,4 +15,29 @@ public class PageControl {
 	public String toCaringoList() {
 		return "CarInfo/ListCarInfo";
 	}
+
+	@RequestMapping(value = "/toEmployeePage.htm")
+	public String toEmployeePage() {
+		return "Employee/ListEmployees";
+	}
+
+	@RequestMapping(value = "/toDepartmentPage.htm")
+	public String toDepartmentPage() {
+		return "Department/ListDepartment";
+	}
+
+	@RequestMapping(value = "/toFilePage.htm")
+	public String toFilePage() {
+		return "File/ListFile";
+	}
+
+	@RequestMapping(value = "/toDevicePage.htm")
+	public String toDevicePage() {
+		return "Device/ListDevice";
+	}
+
+	@RequestMapping(value = "/toCarPage.htm")
+	public String toCarPage() {
+		return "CarInfo/ListCarInfo";
+	}
 }
