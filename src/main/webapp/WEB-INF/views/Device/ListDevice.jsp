@@ -22,8 +22,7 @@
 <body>
 	<jsp:include page="/Top.jsp"></jsp:include>
 	<table id="listDevice"
-		class="table table-border table-hover table-bg table-sort"
-		width="95%">
+		class="table table-border table-hover table-bg table-sort" width="95%">
 		<thead>
 			<tr>
 				<th></th>

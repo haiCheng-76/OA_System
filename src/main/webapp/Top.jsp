@@ -54,8 +54,8 @@
 							class="icon-group"></i><span>员工管理</span> </a></li>
 					<li><a href="${ctx }/pageControl/toDepartmentPage.htm"><i
 							class="icon-briefcase"></i><span>部门管理</span> </a></li>
-					<li><a href="${ctx }/pageControl/toFilePage.htm"><i class="icon-folder-close"></i><span>文件管理</span>
-					</a></li>
+					<li><a href="${ctx }/pageControl/toFilePage.htm"><i
+							class="icon-folder-close"></i><span>文件管理</span> </a></li>
 					<li><a href="${ctx }/pageControl/toDevicePage.htm"><i
 							class="icon-wrench"></i><span>设备管理</span> </a></li>
 					<li><a href="${ctx }/pageControl/toCarPage.htm"><i

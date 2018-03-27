@@ -22,8 +22,7 @@
 <body>
 	<jsp:include page="/Top.jsp"></jsp:include>
 	<table id="listDepartment"
-		class="table table-border table-hover table-bg table-sort"
-		width="95%">
+		class="table table-border table-hover table-bg table-sort" width="95%">
 		<thead>
 			<tr>
 				<th></th>
@@ -37,9 +36,62 @@
 		</tbody>
 	</table>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#listDepartment').DataTable();
-		});
+		$(document)
+				.ready(
+						function() {
+							$('#listDepartment')
+									.DataTable(
+											{
+												paging : false,
+												scrolly : 500,
+												sAjaxDataProp : "",
+												searching : false,
+												ajax : {
+													//指定数据源
+													url : "${ctx}/DepartmentControl/getAllDepartment"
+												},
+												columns : [ {
+													"data" : "employee_id"
+												}, {
+													"data" : "username"
+												}, {
+													"data" : "age"
+												}, {
+													"data" : "departmentName"
+												}, {
+													"data" : "role"
+												}, ],
+												columnDefs : [
+														{
+															targets : 4,
+															render : function(
+																	data, type,
+																	row, meta) {
+																if (data == 1) {
+																	return "管理员"
+																} else {
+																	return "普通员工"
+																}
+															}
+														},
+														{
+															targets : 5,
+															render : function(
+																	data, type,
+																	row, meta) {
+																return '<a style="text-decoration:none" href="javadcript:;" onClick="show(\''
+																		+ data
+																		+ '\')" title="查看"><i class="icon-eye-open"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;'
+																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="edit(\''
+																		+ data
+																		+ '\')" title="编辑"><i class="icon-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;'
+																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="show(\''
+																		+ data
+																		+ '\')" title="删除"><i class="icon-trash"></i></a>&nbsp;&nbsp;';
+															}
+														} ],
+											});
+						});
 	</script>
 </body>
 </html>

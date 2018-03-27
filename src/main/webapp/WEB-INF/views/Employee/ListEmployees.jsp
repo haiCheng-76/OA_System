@@ -9,7 +9,9 @@
 <title>员工管理</title>
 <link rel="stylesheet" type="text/css"
 	href="${ctx }/assets/css/jquery.dataTables.min.css">
-
+<link href="${ctx }/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="${ctx }/assets/css/font-awesome-ie7.min.css"
+	rel="stylesheet">
 <!-- jQuery -->
 <script type="text/javascript" charset="utf8"
 	src="${ctx }/assets/js/jquery-1.7.2.min.js"></script>
@@ -25,7 +27,6 @@
 		class="table table-border table-hover table-bg table-sort" width="95%">
 		<thead>
 			<tr>
-				<th></th>
 				<th class="htz">员工编号</th>
 				<th class="htz">员工姓名</th>
 				<th class="htz">员工年龄</th>
@@ -38,44 +39,69 @@
 		</tbody>
 	</table>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#listEmployee').DataTable({
-				paging : false,
-				scrolly : 500,
-				sAjaxDataProp : "",
-				ajax : {
-					//指定数据源
-					url : "${ctx}/employeeControl/getallEmoloyee"
-				},
-				columns : [ {
-					"data" : ""
-				}, {
-					"data" : "employee_id"
-				}, {
-					"data" : "username"
-				}, {
-					"data" : "age"
-				}, {
-					"data" : "departmentName"
-				}, {
-					"data" : "role"
-				}, ],
-				columnDefs : [{
-					targets : 5,
-					render : function(data, type, row, meta) {
-						if(data == 1) {
-							return "管理员"
-						} else {
-							return "普通员工"
-						}
-					}
-				},{
-					targets : -1,
-					render : function (data,type,row,meta) {
-						return "<a href="javascript:;" onClick="show()" title="查看"></a>";					}
-				}],
-			});
-		});
+		$(document)
+				.ready(
+						function() {
+							$('#listEmployee')
+									.DataTable(
+											{
+												paging : false,
+												scrolly : 500,
+												sAjaxDataProp : "",
+												searching : false,
+												ajax : {
+													//指定数据源
+													url : "${ctx}/employeeControl/getallEmoloyee"
+												},
+												columns : [ {
+													"data" : "employee_id"
+												}, {
+													"data" : "username"
+												}, {
+													"data" : "age"
+												}, {
+													"data" : "departmentName"
+												}, {
+													"data" : "role"
+												}, ],
+												columnDefs : [
+														{
+															orderable : false,
+															targets : [1,3,4]
+														},
+														{
+															targets : 4,
+															render : function(
+																	data, type,
+																	row, meta) {
+																if (data == 1) {
+																	return "管理员"
+																} else {
+																	return "普通员工"
+																}
+															}
+														},
+														{
+															targets : 5,
+															render : function(
+																	data, type,
+																	row, meta) {
+																return '<a style="text-decoration:none" href="javadcript:;" onClick="show(\''
+																		+ data
+																		+ '\')" title="查看"><i class="icon-eye-open"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;'
+																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="edit(\''
+																		+ data
+																		+ '\')" title="编辑"><i class="icon-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;'
+																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="show(\''
+																		+ data
+																		+ '\')" title="删除"><i class="icon-trash"></i></a>&nbsp;&nbsp;';
+															}
+														} ],
+											});
+						});
+		function show(id) {
+			alert(id)
+		}
 	</script>
 </body>
 </html>

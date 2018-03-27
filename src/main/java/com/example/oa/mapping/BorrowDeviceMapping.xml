@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.oa.dao.Borrow_DeviceDao">
-	<insert id="addBorrow_Device" parameterType="com.example.oa.domain.Borrow_device">
+	<insert id="addBorrow_Device"
+		parameterType="com.example.oa.domain.Borrow_device">
 		INSERT INTO
-		borrow_device (borrow_device_deviceid,employeeid,borrow_device_date)
-		VALUES (#{borrow_device_deviceid},#{employeeid},now())
+		borrow_device
+		(borrow_device_deviceid,employeeid,borrow_device_date)
+		VALUES
+		(#{borrow_device_deviceid},#{employeeid},now())
 	</insert>
-	<update id="updateBorrow_Device" parameterType="com.example.oa.domain.Borrow_device">
+	<update id="updateBorrow_Device"
+		parameterType="com.example.oa.domain.Borrow_device">
 		update
 		borrow_device set
 		borrow_device_deviceid=#{borrow_device_deviceid},employeeid=#{employeeid},borrow_device_date=now()
 		where borrow_device_id=#{borrow_device_id}
 	</update>
-	<delete id="deleteBorrow_Device" parameterType="com.example.oa.domain.Borrow_device">
+	<delete id="deleteBorrow_Device"
+		parameterType="com.example.oa.domain.Borrow_device">
 		delete from
-		borrow_device where borrow_device_id=#{borrow_device_id}
+		borrow_device where
+		borrow_device_id=#{borrow_device_id}
 	</delete>
-	<select id="getallBorrowDeviceInfo" resultType="com.example.oa.domain.Borrow_device">
+	<select id="getallBorrowDeviceInfo"
+		resultType="com.example.oa.domain.Borrow_device">
 		select * from
 		borrow_device
 	</select>

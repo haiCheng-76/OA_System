@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.oa.dao.Borrow_CarDao">
-	<insert id="addBorrowedInfo" parameterType="com.example.oa.domain.Borrow_car">
+	<insert id="addBorrowedInfo"
+		parameterType="com.example.oa.domain.Borrow_car">
 		INSERT INTO
-		borrow_car (carid, borrow_date, employeeid) VALUES (#{carid}, now(),
+		borrow_car (carid, borrow_date, employeeid)
+		VALUES (#{carid}, now(),
 		#{employeeid})
 	</insert>
-	<update id="updateBorrowInfo" parameterType="com.example.oa.domain.Borrow_car">
+	<update id="updateBorrowInfo"
+		parameterType="com.example.oa.domain.Borrow_car">
 		update borrow_car
 		set
 		carid=#{carid},borrow_date=now(),employeeid=#{employeeid} where
 		borrow_car_id=#{borrow_car_id}
 	</update>
-	<delete id="deleteBorrowInfo" parameterType="com.example.oa.domain.Borrow_car">
+	<delete id="deleteBorrowInfo"
+		parameterType="com.example.oa.domain.Borrow_car">
 		delete from
 		borrow_car where
 		borrow_car_id=#{borrow_car_id}
 	</delete>
-	<select id="getallBorrowInfo" resultType="com.example.oa.domain.Borrow_car">
+	<select id="getallBorrowInfo"
+		resultType="com.example.oa.domain.Borrow_car">
 		select * from borrow_car
 	</select>
-	
+
 </mapper>

@@ -18,12 +18,14 @@
 		#{file_location})
 	</insert>
 	<!-- 修改文件信息 -->
-	<update id="updateFile" parameterType="com.example.oa.domain.File">
+	<update id="updateFile"
+		parameterType="com.example.oa.domain.File">
 		update file set
 		filename=#{filename},employee_id=#{employee_id} where fileid=#{fileid}
 	</update>
 	<!-- 删除文件信息 -->
-	<delete id="deleteFile" parameterType="com.example.oa.domain.File">
+	<delete id="deleteFile"
+		parameterType="com.example.oa.domain.File">
 		delete from file where
 		fileid=#{fileid}
 	</delete>

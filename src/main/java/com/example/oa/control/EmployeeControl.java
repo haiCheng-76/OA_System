@@ -21,7 +21,7 @@ public class EmployeeControl {
 	@RequestMapping(value = "/isuer")
 	@ResponseBody
 	public String isUser(String account, String password, int role) {
-		log.info("璐﹀彿:"+account+"瀵嗙爜锛�"+password+";瑙掕壊锛�"+role);
+		log.info("用户名:"+account+"密码"+password+";角色"+role);
 		String str = "";
 		boolean hasuser = employeeService.getuserByUPR(account, password, role);
 		if (hasuser) {
