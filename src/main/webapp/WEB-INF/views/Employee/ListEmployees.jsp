@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>员工管理</title>
+<link href="${ctx }/assets/images/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" type="text/css"
 	href="${ctx }/assets/css/jquery.dataTables.min.css">
 <link href="${ctx }/assets/css/font-awesome.min.css" rel="stylesheet">
