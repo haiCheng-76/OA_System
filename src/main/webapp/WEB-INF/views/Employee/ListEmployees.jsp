@@ -63,7 +63,7 @@
 													"data" : "departmentName"
 												}, {
 													"data" : "role"
-												}, ],
+												}],
 												columnDefs : [
 														{
 															orderable : false,

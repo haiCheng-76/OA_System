@@ -25,7 +25,6 @@
 		class="table table-border table-hover table-bg table-sort" width="95%">
 		<thead>
 			<tr>
-				<th></th>
 				<th class="htz">设备编号</th>
 				<th class="htz">设备名称</th>
 				<th class="htz">设备价格</th>
@@ -37,9 +36,52 @@
 		</tbody>
 	</table>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#listDevice').DataTable();
-		});
+		$(document)
+				.ready(
+						function() {
+							$('#listDevice')
+									.DataTable(
+											{
+												paging : false,
+												scrolly : 500,
+												sAjaxDataProp : "",
+												searching : false,
+												ajax : {
+													//指定数据源
+													url : "${ctx}/deviceControl/getAllDevice"
+												},
+												columns : [ {
+													"data" : "deviceid"
+												}, {
+													"data" : "devicename"
+												}, {
+													"data" : "deviceprice"
+												}, {
+													"data" : "manufacture"
+												}],
+												columnDefs : [
+														{
+															orderable : false,
+															targets : [ 1, 3]
+														},
+														{
+															targets : 4,
+															render : function(
+																	data, type,
+																	row, meta) {
+																return '<a style="text-decoration:none" href="javadcript:;" onClick="show(\''
+																		+ data
+																		+ '\')" title="查看"><i class="icon-eye-open"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;'
+																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="edit(\''
+																		+ data
+																		+ '\')" title="编辑"><i class="icon-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;'
+																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="show(\''
+																		+ data
+																		+ '\')" title="删除"><i class="icon-trash"></i></a>&nbsp;&nbsp;';
+															}
+														} ],
+											});
+						});
 	</script>
 </body>
 </html>

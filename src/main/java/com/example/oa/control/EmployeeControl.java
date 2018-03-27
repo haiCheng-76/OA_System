@@ -23,7 +23,13 @@ public class EmployeeControl {
 	public String isUser(String account, String password, int role) {
 		log.info("用户名:"+account+"密码"+password+";角色"+role);
 		String str = "";
-		boolean hasuser = employeeService.getuserByUPR(account, password, role);
+		boolean hasuser = false;
+		try {
+			hasuser = employeeService.getuserByUPR(account, password, role);
+		} catch (Exception e) {
+			log.info("判断用户登陆失败时，网络出错！");
+			e.printStackTrace();
+		}
 		if (hasuser) {
 			str = "success";
 		} else {
@@ -51,7 +57,14 @@ public class EmployeeControl {
 	public String deleteEmployee() {
 		String msg = "";
 		Employee e = new Employee();
-		boolean isdelete = employeeService.deleteEmployee(e);
+		boolean isdelete = false;
+		try {
+			isdelete = employeeService.deleteEmployee(e);
+			log.info("删除用户成功");
+		} catch (Exception e1) {
+			log.info("删除用户时，网络出错！");
+			e1.printStackTrace();
+		}
 		if (isdelete) {
 			msg = "";
 		} else {
@@ -64,7 +77,14 @@ public class EmployeeControl {
 	public String addEmployee() {
 		String msg = "";
 		Employee e = new Employee();
-		boolean isadd = employeeService.addEmployee(e);
+		boolean isadd =false;
+		try {
+			isadd = employeeService.addEmployee(e);
+			log.info("添加用户成功");
+		} catch (Exception e1) {
+			log.info("添加用户时，网络出错！");
+			e1.printStackTrace();
+		}
 		if (isadd) {
 			msg = "";
 		} else {
@@ -75,6 +95,14 @@ public class EmployeeControl {
 	@RequestMapping(value = "/getallEmoloyee")
 	@ResponseBody
 	public List<Employee> getallEmoloyee() {
-		return employeeService.getallEmployee();
+		List<Employee> listEmployee = null;
+		try {
+			listEmployee = employeeService.getallEmployee();
+			log.info("获取所有员工信息成功");
+		} catch (Exception e) {
+			log.info("获取所有员工信息时网络出错！");
+			e.printStackTrace();
+		}
+		return listEmployee;
 	}
 }

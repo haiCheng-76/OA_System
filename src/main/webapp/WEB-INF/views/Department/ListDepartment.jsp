@@ -25,7 +25,6 @@
 		class="table table-border table-hover table-bg table-sort" width="95%">
 		<thead>
 			<tr>
-				<th></th>
 				<th class="htz">部门编号</th>
 				<th class="htz">部门名称</th>
 				<th class="htz">办公地址</th>
@@ -51,31 +50,18 @@
 													url : "${ctx}/DepartmentControl/getAllDepartment"
 												},
 												columns : [ {
-													"data" : "employee_id"
+													"data" : "departmentid"
 												}, {
-													"data" : "username"
+													"data" : "departmentname"
 												}, {
-													"data" : "age"
-												}, {
-													"data" : "departmentName"
-												}, {
-													"data" : "role"
-												}, ],
-												columnDefs : [
+													"data" : "departmentaddress"
+												}],
+												columnDefs : [{
+													orderable : false,
+													targets : [1,2]
+												},
 														{
-															targets : 4,
-															render : function(
-																	data, type,
-																	row, meta) {
-																if (data == 1) {
-																	return "管理员"
-																} else {
-																	return "普通员工"
-																}
-															}
-														},
-														{
-															targets : 5,
+															targets : 3,
 															render : function(
 																	data, type,
 																	row, meta) {
