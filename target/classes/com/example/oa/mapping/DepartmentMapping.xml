@@ -33,6 +33,6 @@
 		SELECT
 		departmentname,departmenttelephone,departmentaddress,departmentid
 		from
-		department
+		department ORDER BY departmentid
 	</select>
 </mapper>

@@ -50,17 +50,24 @@
 													//指定数据源
 													url : "${ctx}/DepartmentControl/getAllDepartment"
 												},
-												columns : [ {
-													"data" : "departmentid"
-												}, {
-													"data" : "departmentname"
-												}, {
-													"data" : "departmentaddress"
-												}],
-												columnDefs : [{
-													orderable : false,
-													targets : [1,2]
-												},
+												columns : [
+														{
+															"data" : "departmentid"
+														},
+														{
+															"data" : "departmentname"
+														},
+														{
+															"data" : "departmentaddress"
+														},
+														{
+															"data" : "departmentid"
+														} ],
+												columnDefs : [
+														{
+															orderable : false,
+															targets : [ 1, 2 ]
+														},
 														{
 															targets : 3,
 															render : function(
@@ -72,13 +79,20 @@
 																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="edit(\''
 																		+ data
 																		+ '\')" title="编辑"><i class="icon-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;'
-																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="show(\''
+																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="del(\''
 																		+ data
 																		+ '\')" title="删除"><i class="icon-trash"></i></a>&nbsp;&nbsp;';
 															}
 														} ],
 											});
 						});
+		function show(id) {
+			alert(id)
+		}
+		function edit(id) {
+		}
+		function del(id) {
+		}
 	</script>
 </body>
 </html>

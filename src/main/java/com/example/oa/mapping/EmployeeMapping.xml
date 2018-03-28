@@ -47,7 +47,7 @@
 		SELECT
 		e.employee_id,e.employee_account,e.username,e.`password`,d.departmentname,e.age,e.address,e.role
 		FROM employee e,department d
-		where e.departmentid=d.departmentid
+		where e.departmentid=d.departmentid ORDER BY e.employee_id
 	</select>
 
 	<select id="getuserByUPR"

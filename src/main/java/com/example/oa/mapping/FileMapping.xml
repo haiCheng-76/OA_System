@@ -42,11 +42,12 @@
 		employee e
 		WHERE
 		e.employee_id = f.employee_id
-		AND f.fileid = #{fileid};
+		AND f.fileid = #{fileid}
 	</select>
 	<!-- 查找所有文件信息 -->
 	<select id="getallFile" resultMap="fileInfo">
 		SELECT
+		f.fileid,
 		f.filename,
 		f.filesize,
 		f.fileuploadtime,
@@ -56,6 +57,8 @@
 		file f,
 		employee e
 		WHERE
-		e.employee_id = f.employee_id;
+		e.employee_id = f.employee_id
+		ORDER BY
+		f.fileid
 	</select>
 </mapper>

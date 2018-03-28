@@ -59,6 +59,9 @@
 													"data" : "deviceprice"
 												}, {
 													"data" : "manufacture"
+												},
+												{
+													"data" : "deviceid"
 												}],
 												columnDefs : [
 														{
@@ -76,13 +79,16 @@
 																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="edit(\''
 																		+ data
 																		+ '\')" title="编辑"><i class="icon-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;'
-																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="show(\''
+																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="del(\''
 																		+ data
 																		+ '\')" title="删除"><i class="icon-trash"></i></a>&nbsp;&nbsp;';
 															}
 														} ],
 											});
 						});
+		function show(id) {alert(id)}
+		function edit(id) {}
+		function del(id) {}
 	</script>
 </body>
 </html>

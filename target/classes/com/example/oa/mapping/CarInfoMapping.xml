@@ -31,6 +31,6 @@
 		resultType="com.example.oa.domain.CarInfo">
 		SELECT
 		carid,carname,carnumber,carprice
-		FROM carinfo
+		FROM carinfo ORDER BY carid
 	</select>
 </mapper>

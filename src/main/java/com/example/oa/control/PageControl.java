@@ -2,6 +2,7 @@ package com.example.oa.control;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/pageControl")
@@ -20,9 +21,13 @@ public class PageControl {
 	public String toEmployeePage() {
 		return "Employee/ListEmployees";
 	}
-	@RequestMapping(value="/toShowEmployee.htm")
-	public String toShowEmployee() {
-		return "Employee/ShowEmployee";
+
+	@RequestMapping(value = "/toShowEmployee.htm")
+	public ModelAndView toShowEmployee(String ID) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("Employee/ShowEmployee");
+		mav.addObject("ID", ID);
+		return mav;
 	}
 
 	@RequestMapping(value = "/toDepartmentPage.htm")

@@ -29,6 +29,6 @@
 		resultType="com.example.oa.domain.Device">
 		select
 		deviceid,devicename,deviceprice,devicenumber from
-		device
+		device ORDER BY deviceid
 	</select>
 </mapper>

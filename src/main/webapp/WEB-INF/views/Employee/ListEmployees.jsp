@@ -17,6 +17,8 @@
 <!-- jQuery -->
 <script type="text/javascript" charset="utf8"
 	src="${ctx }/assets/js/jquery-1.7.2.min.js"></script>
+	<!-- layer -->
+<script type="text/javascript" src="${ctx }/assets/layer/layer.js"></script>
 
 <!-- DataTables -->
 <script type="text/javascript" charset="utf8"
@@ -105,15 +107,14 @@
 						});
 		//查看
 		function show(id) {
-			layer_show_b('查看', '${ctx}/pageControl/viewtfnewsinfo.htm?ID='
-					+ id, 500, ''); 
+			layer_show('查看', '${ctx}/pageControl/toShowEmployee.htm?ID=' + id, '500', '');
 		}
+		
 		//编辑
 		function edit(id) {
 		}
 		//删除
 		function del(id) {
-		}
 		}
 	</script>
 </body>
