@@ -20,6 +20,10 @@ public class PageControl {
 	public String toEmployeePage() {
 		return "Employee/ListEmployees";
 	}
+	@RequestMapping(value="/toShowEmployee.htm")
+	public String toShowEmployee() {
+		return "Employee/ShowEmployee";
+	}
 
 	@RequestMapping(value = "/toDepartmentPage.htm")
 	public String toDepartmentPage() {

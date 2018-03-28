@@ -13,6 +13,7 @@
 <link href="${ctx }/assets/css/font-awesome.min.css" rel="stylesheet">
 <link href="${ctx }/assets/css/font-awesome-ie7.min.css"
 	rel="stylesheet">
+<script type="text/javascript" src="${ctx }/assets/js/main.js"></script>
 <!-- jQuery -->
 <script type="text/javascript" charset="utf8"
 	src="${ctx }/assets/js/jquery-1.7.2.min.js"></script>
@@ -64,11 +65,13 @@
 													"data" : "departmentName"
 												}, {
 													"data" : "role"
-												}],
+												}, {
+													"data" : "employee_id"
+												} ],
 												columnDefs : [
 														{
 															orderable : false,
-															targets : [1,3,4]
+															targets : [ 1, 3, 4 ]
 														},
 														{
 															targets : 4,
@@ -93,15 +96,24 @@
 																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="edit(\''
 																		+ data
 																		+ '\')" title="编辑"><i class="icon-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;'
-																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="show(\''
+																		+ '<a style="text-decoration:none" href="javadcript:;" onClick="del(\''
 																		+ data
 																		+ '\')" title="删除"><i class="icon-trash"></i></a>&nbsp;&nbsp;';
 															}
 														} ],
 											});
 						});
+		//查看
 		function show(id) {
-			alert(id)
+			layer_show_b('查看', '${ctx}/pageControl/viewtfnewsinfo.htm?ID='
+					+ id, 500, ''); 
+		}
+		//编辑
+		function edit(id) {
+		}
+		//删除
+		function del(id) {
+		}
 		}
 	</script>
 </body>

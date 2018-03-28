@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link href="${ctx }/assets/images/favicon.ico" rel="shortcut icon" />
+
 <link href="${ctx }/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="${ctx }/assets/css/bootstrap-responsive.min.css"
 	rel="stylesheet">

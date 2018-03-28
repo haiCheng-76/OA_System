@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.oa.domain.Employee;
 import com.example.oa.service.EmployeeService;
@@ -104,5 +105,18 @@ public class EmployeeControl {
 			e.printStackTrace();
 		}
 		return listEmployee;
+	}
+	
+	@RequestMapping(value="/getEmployeeById")
+	@ResponseBody
+	public Employee getEmployeeById(@RequestParam(value="ID",required=false) Integer id) {
+		Employee resp = new Employee();
+		try {
+			resp = employeeService.selectEmployeeById(id);
+		} catch (Exception e) {
+			log.info("获取编号为"+id+"的员工信息时出现异常，请稍后重试");
+			e.printStackTrace();
+		}
+		return resp;
 	}
 }
