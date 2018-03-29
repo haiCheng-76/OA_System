@@ -38,7 +38,7 @@
 	<select id="selectEmployeeById"
 		parameterType="java.lang.Integer" resultMap="employeeInfo">
 		SELECT
-		e.employee_account,e.employee_id,e.username,e.`password`,e.age,e.address,d.departmentname,e.role
+		e.employee_account,e.employee_id,e.username,e.`password`,e.age,e.address,d.departmentname,e.departmentid,e.role
 		FROM employee e,department d
 		WHERE e.departmentid=d.departmentid and
 		e.employee_id=#{employee_id}

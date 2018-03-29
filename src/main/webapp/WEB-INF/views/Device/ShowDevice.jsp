@@ -31,7 +31,7 @@
 						<label for="deviceName" class="col-sm-2 control-label">名称</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="deviceName"
-								placeholder="名称">
+								placeholder="名称" readonly="readonly">
 						</div>
 					</div>
 
@@ -39,7 +39,7 @@
 						<label for="devicePrice" class="col-sm-2 control-label">价格</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="devicePrice"
-								placeholder="价格">
+								placeholder="价格" readonly="readonly">
 						</div>
 					</div>
 
@@ -47,19 +47,15 @@
 						<label for="deviceNum" class="col-sm-2 control-label">数量</label>
 						<div class="col-sm-10">
 							<input type="number" class="form-control" id="deviceNum"
-								placeholder="数量">
+								placeholder="数量" readonly="readonly">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="manufacture" class="col-sm-2 control-label">生产商</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="manufacture"
-								placeholder="生产商">
+								placeholder="生产商" readonly="readonly">
 						</div>
-					</div>
-					<div class="form-group">
-						<button type="button"
-							class="btn btn-default btn-block btn-primary" onClick="commit()">提交</button>
 					</div>
 				</form>
 			</div>
@@ -71,56 +67,24 @@
 		<script src="${ctx }/assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			var ID = '${ID}';
-
-			$(document).ready(
-					function() {
-						var selectOption;
-						<!--通过ID获得员工信息 / -->
-						$.ajax({
-							url : "${ctx}/deviceControl/getDeviceById",
-							data : {
-								ID : ID
-							},
-							success : function(data) {
-								$("#deviceId").val(data.deviceid);
-								$("#deviceName").val(data.devicename);
-								$("#devicePrice").val(data.deviceprice);
-								$("#deviceNum").val(data.devicenumber);
-								$("#manufacture").val(data.manufacture);
-							},
-							error : function(data) {
-								console.log(data)
-							}
-						});
-					});
-
-			<!--提交修改后的数据-->
-			function commit() {
-				var id = $("#deviceId").val();
-				var name = $("#deviceName").val();
-				var price = $("#devicePrice").val();
-				var num = $("#deviceNum").val();
-				var man = $("#manufacture").val();
-				$
-						.ajax({
-							url : "${ctx}/deviceControl/updateDevice",
-							data : {
-								deviceid : id,
-								devicename : name,
-								deviceprice : price,
-								devicenumber : num,
-								manufacture : man,
-							},
-							success : function(data) {
-								if (data == "SUCCESS") {
-									var index = parent.layer
-											.getFrameIndex(window.name); //先得到当前iframe层的索引
-									window.parent.location.reload();
-									parent.layer.close(index); //再执行关闭
-								}
-							}
-						});
-			}
+			$(document).ready(function() {
+				$.ajax({
+					url : "${ctx}/deviceControl/getDeviceById",
+					data : {
+						ID : ID
+					},
+					success : function(data) {
+						$("#deviceId").val(data.deviceid);
+						$("#deviceName").val(data.devicename);
+						$("#devicePrice").val(data.deviceprice);
+						$("#deviceNum").val(data.devicenumber);
+						$("#manufacture").val(data.manufacture);
+					},
+					error : function(data) {
+						console.log(data)
+					}
+				});
+			});
 		</script>
 </body>
 </html>

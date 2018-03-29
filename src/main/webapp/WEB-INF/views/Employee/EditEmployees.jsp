@@ -23,23 +23,23 @@
 						<label for="employeeId" class="col-sm-2 control-label">员工编号</label>
 						<div class="col-sm-10">
 							<input type="number" class="form-control" id="employeeId"
-								placeholder="员工编号" readonly="readonly">
+								placeholder="编号" readonly="readonly">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="employeeAccount" class="col-sm-2 control-label">员工账号</label>
+						<label for="employeeAccount" class="col-sm-2 control-label">账号</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="employeeAccount"
-								placeholder="员工账号">
+								placeholder="账号">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="employeeUername" class="col-sm-2 control-label">员工姓名</label>
+						<label for="employeeUername" class="col-sm-2 control-label">姓名</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="employeeUername"
-								placeholder="员工姓名">
+								placeholder="姓名">
 						</div>
 					</div>
 
@@ -71,22 +71,24 @@
 					<div class="form-group">
 						<label for="departmentName" class="col-sm-2 control-label">所属部门</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="departmentName"
-								placeholder="所属部门">
+							<select id="departmentName" style="width: 450px">
+
+							</select>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="role" class="col-sm-2 control-label">角色</label>
 						<div class="col-sm-10">
-							<select id="role">
+							<select id="role" style="width: 450px">
 								<option value="0">普通员工</option>
 								<option value="1">管理员</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
-						<button type="button" class="btn btn-default btn-block btn-primary" onClick="commit()">按钮</button>
+						<button type="button"
+							class="btn btn-default btn-block btn-primary" onClick="commit()">提交</button>
 					</div>
 				</form>
 			</div>
@@ -98,32 +100,46 @@
 		<script src="${ctx }/assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			var ID = '${ID}';
-			console.log("编号为" + ID)
-			$(document).ready(function() {
-				$.ajax({
-					url : "${ctx}/employeeControl/getEmployeeById",
-					data : {
-						ID : ID
-					},
-					success : function(data) {
-						$("#employeeId").val(data.employee_id);
-						$("#employeeAccount").val(data.employee_account);
-						$("#employeeUername").val(data.username);
-						$("#employeePassword").val(data.password);
-						$("#employeeAge").val(data.age);
-						$("#employeeAddr").val(data.address);
-						$("#departmentName").val(data.departmentName);
-						if (data.role == 0) {
-							$("#role").val("普通员工");
-						} else {
-							$("#role").val("管理员");
-						}
-					},
-					error : function(data) {
-						console.log(data)
-					}
-				});
-			});
+			
+			$(document).ready(
+					function() {
+						var selectOption;
+						<!--通过ID获得员工信息 / -->
+						$.ajax({
+							url : "${ctx}/employeeControl/getEmployeeById",
+							data : {
+								ID : ID
+							},
+							success : function(data) {
+								$("#employeeId").val(data.employee_id);
+								$("#employeeAccount")
+										.val(data.employee_account);
+								$("#employeeUername").val(data.username);
+								$("#employeePassword").val(data.password);
+								$("#employeeAge").val(data.age);
+								$("#employeeAddr").val(data.address);
+								$("#departmentName").val(data.departmentid)
+								$("#role").val(data.role);
+	
+							},
+							error : function(data) {
+								console.log(data)
+							}
+						});
+						<!--部门下拉列表-->
+						$.ajax({
+							url : "${ctx}/DepartmentControl/getAllDepartment",
+							type : "GET",
+							success : function(data) {
+								for (var i = 0; i < data.length; i++) {
+									$("#departmentName").append(
+											'<option value="'+data[i].departmentid+'">'+ data[i].departmentname+'</option>');
+								}
+							}
+						});
+					});
+			
+			<!--提交修改后的数据-->
 			function commit() {
 				var id = $("#employeeId").val();
 				var account = $("#employeeAccount").val();
@@ -132,8 +148,9 @@
 				var age = $("#employeeAge").val();
 				var addr = $("#employeeAddr").val();
 				var role = $("#role").val();
+				var departmentid = $("#departmentName").val();
 				$.ajax({
-					url : "",
+					url : "${ctx}/employeeControl/updateEmployee",
 					data : {
 						employee_id : id,
 						employee_account : account,
@@ -141,8 +158,16 @@
 						password : password,
 						age : age,
 						address : addr,
-						role : role
+						role : role,
+						departmentid : departmentid
 					},
+					success : function(data) {
+						if (data == "SUCCESS") {
+							var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+							window.parent.location.reload();
+							parent.layer.close(index); //再执行关闭
+						}
+					}
 				});
 			}
 		</script>

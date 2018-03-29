@@ -55,9 +55,10 @@ public class EmployeeControl {
 	}
 
 	@RequestMapping(value = "/deleteEmployee.htm")
-	public String deleteEmployee() {
-		String msg = "";
+	@ResponseBody
+	public String deleteEmployee(Integer ID) {
 		Employee e = new Employee();
+		e.setEmployee_id(ID);
 		boolean isdelete = false;
 		try {
 			isdelete = employeeService.deleteEmployee(e);
@@ -67,11 +68,9 @@ public class EmployeeControl {
 			e1.printStackTrace();
 		}
 		if (isdelete) {
-			msg = "";
-		} else {
-			msg = "";
+			return "SUCCESS";
 		}
-		return msg;
+		return "ERROR";
 	}
 
 	@RequestMapping(value = "/addEmployee.htm")
@@ -118,5 +117,21 @@ public class EmployeeControl {
 			e.printStackTrace();
 		}
 		return resp;
+	}
+	
+	@RequestMapping(value="/updateEmployee")
+	@ResponseBody
+	public String updateEmployee(Employee e) {
+		boolean isupdate = false;
+		try {
+			isupdate = employeeService.updateEmployee(e);
+		} catch (Exception e1) {
+			log.info("修改员工信息时出现异常，请稍后重试");
+			e1.printStackTrace();
+		}
+		if (isupdate) {
+			return "SUCCESS";
+		}
+		return "ERROR";
 	}
 }

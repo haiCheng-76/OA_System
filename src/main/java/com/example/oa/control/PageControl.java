@@ -30,6 +30,14 @@ public class PageControl {
 		return mav;
 	}
 
+	@RequestMapping(value = "/toEditEmployee.htm")
+	public ModelAndView toEditEmployee(String ID) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("Employee/EditEmployees");
+		mav.addObject("ID", ID);
+		return mav;
+	}
+
 	@RequestMapping(value = "/toDepartmentPage.htm")
 	public String toDepartmentPage() {
 		return "Department/ListDepartment";
@@ -43,6 +51,21 @@ public class PageControl {
 	@RequestMapping(value = "/toDevicePage.htm")
 	public String toDevicePage() {
 		return "Device/ListDevice";
+	}
+	
+	@RequestMapping(value = "/toShowDevice.htm")
+	public ModelAndView toShowDevice(String ID) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("Device/ShowDevice");
+		mav.addObject("ID", ID);
+		return mav;
+	}
+	@RequestMapping(value = "/toEditDevice.htm")
+	public ModelAndView toEditDevice(String ID) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("Device/EditDevice");
+		mav.addObject("ID", ID);
+		return mav;
 	}
 
 	@RequestMapping(value = "/toCarPage.htm")

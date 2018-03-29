@@ -13,11 +13,11 @@
 <link href="${ctx }/assets/css/font-awesome.min.css" rel="stylesheet">
 <link href="${ctx }/assets/css/font-awesome-ie7.min.css"
 	rel="stylesheet">
-<script type="text/javascript" src="${ctx }/assets/js/main.js"></script>
 <!-- jQuery -->
 <script type="text/javascript" charset="utf8"
 	src="${ctx }/assets/js/jquery-1.7.2.min.js"></script>
-	<!-- layer -->
+<script type="text/javascript" src="${ctx }/assets/js/main.js"></script>
+<!-- layer -->
 <script type="text/javascript" src="${ctx }/assets/layer/layer.js"></script>
 
 <!-- DataTables -->
@@ -107,14 +107,42 @@
 						});
 		//查看
 		function show(id) {
-			layer_show('查看', '${ctx}/pageControl/toShowEmployee.htm?ID=' + id, '500', '');
+			layer_show('查看', '${ctx}/pageControl/toShowEmployee.htm?ID=' + id,
+					'500', '');
 		}
-		
+
 		//编辑
 		function edit(id) {
+			layer_show('编辑', '${ctx}/pageControl/toEditEmployee.htm?ID=' + id,
+					'500', '');
 		}
 		//删除
 		function del(id) {
+			layer.confirm('您确认想要删除吗？', {
+				btn : [ '取消', '确定' ],
+				btn2 : function(index, layero) {
+
+					$.ajax({
+						type : 'POST',
+						url : "${ctx}/employeeControl/deleteEmployee.htm",
+						data : {
+							ID : id
+						},
+						success : function(data) {
+							if(data == "SUCCESS") {
+							var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+							window.parent.location.reload();
+							parent.layer.close(index); //再执行关闭
+							} 
+						},
+						error : function(request, textStatus) {
+							layer.alert('错误', {
+								icon : 5
+							});
+						}
+					});
+				}
+			});
 		}
 	</script>
 </body>

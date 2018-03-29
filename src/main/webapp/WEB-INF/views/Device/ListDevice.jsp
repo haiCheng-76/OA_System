@@ -14,7 +14,9 @@
 <!-- jQuery -->
 <script type="text/javascript" charset="utf8"
 	src="${ctx }/assets/js/jquery-1.7.2.min.js"></script>
-
+<script type="text/javascript" src="${ctx }/assets/js/main.js"></script>
+<!-- layer -->
+<script type="text/javascript" src="${ctx }/assets/layer/layer.js"></script>
 <!-- DataTables -->
 <script type="text/javascript" charset="utf8"
 	src="${ctx }/assets/js/jquery.dataTables.min.js"></script>
@@ -59,14 +61,13 @@
 													"data" : "deviceprice"
 												}, {
 													"data" : "manufacture"
-												},
-												{
+												}, {
 													"data" : "deviceid"
-												}],
+												} ],
 												columnDefs : [
 														{
 															orderable : false,
-															targets : [ 1, 3]
+															targets : [ 1, 3 ]
 														},
 														{
 															targets : 4,
@@ -86,9 +87,42 @@
 														} ],
 											});
 						});
-		function show(id) {alert(id)}
-		function edit(id) {}
-		function del(id) {}
+		function show(id) {
+			layer_show('查看', '${ctx}/pageControl/toShowDevice.htm?ID=' + id,
+					'500', '');
+		}
+		function edit(id) {
+			layer_show('查看', '${ctx}/pageControl/toEditDevice.htm?ID=' + id,
+					'500', '');
+		}
+		function del(id) {
+			layer.confirm('您确认想要删除吗？', {
+				btn : [ '取消', '确定' ],
+				btn2 : function(index, layero) {
+
+					$.ajax({
+						type : 'POST',
+						url : "${ctx}/deviceControl/deleteDevice",
+						data : {
+							ID : id
+						},
+						success : function(data) {
+							if (data == "SUCCESS") {
+								var index = parent.layer
+										.getFrameIndex(window.name); //先得到当前iframe层的索引
+								window.parent.location.reload();
+								parent.layer.close(index); //再执行关闭
+							}
+						},
+						error : function(request, textStatus) {
+							layer.alert('错误', {
+								icon : 5
+							});
+						}
+					});
+				}
+			});
+		}
 	</script>
 </body>
 </html>
