@@ -23,7 +23,7 @@
 						<label for="departmentId" class="col-sm-2 control-label">部门编号</label>
 						<div class="col-sm-10">
 							<input type="number" class="form-control" id="departmentId"
-								placeholder="部门编号">
+								placeholder="部门编号" readonly="readonly">
 						</div>
 					</div>
 
@@ -31,7 +31,7 @@
 						<label for="departmentName" class="col-sm-2 control-label">部门名称</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="departmentName"
-								placeholder="部门名称">
+								placeholder="部门名称" readonly="readonly">
 						</div>
 					</div>
 
@@ -39,7 +39,7 @@
 						<label for="tel" class="col-sm-2 control-label">联系方式</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="tel"
-								placeholder="联系方式">
+								placeholder="联系方式" readonly="readonly">
 						</div>
 					</div>
 
@@ -47,12 +47,8 @@
 						<label for="addr" class="col-sm-2 control-label">位置</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="addr"
-								placeholder="位置">
+								placeholder="位置" readonly="readonly">
 						</div>
-					</div>
-					<div class="form-group">
-						<button type="button"
-							class="btn btn-default btn-block btn-primary" onClick="commit()">提交</button>
 					</div>
 				</form>
 			</div>
@@ -64,54 +60,24 @@
 		<script src="${ctx }/assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			var ID = '${ID}';
-
-			$(document).ready(
-					function() {
-						var selectOption;
-						<!--通过ID获得员工信息 / -->
-						$.ajax({
-							url : "${ctx}/DepartmentControl/getDepartmentById",
-							data : {
-								type : "POST",
-								ID : ID
-							},
-							success : function(data) {
-								$("#departmentId").val(data.departmentid);
-								$("#departmentName").val(data.departmentname);
-								$("#tel").val(data.departmenttelephone);
-								$("#addr").val(data.departmentaddress);
-							},
-							error : function(data) {
-								console.log(data)
-							}
-						});
-					});
-
-			<!--提交修改后的数据-->
-			function commit() {
-				var id = $("#departmentId").val();
-				var name = $("#departmentName").val();
-				var tel = $("#tel").val();
-				var addr = $("#addr").val();
-				$
-						.ajax({
-							url : "${ctx}/DepartmentControl/updateDepartment",
-							data : {
-								departmentid : id,
-								departmentname : name,
-								departmenttelephone : tel,
-								departmentaddress : addr,
-							},
-							success : function(data) {
-								if (data == "SUCCESS") {
-									var index = parent.layer
-											.getFrameIndex(window.name); //先得到当前iframe层的索引
-									window.parent.location.reload();
-									parent.layer.close(index); //再执行关闭
-								}
-							}
-						});
-			}
+			$(document).ready(function() {
+				$.ajax({
+					url : "${ctx}/DepartmentControl/getDepartmentById",
+					data : {
+						type : "POST",
+						ID : ID
+					},
+					success : function(data) {
+						$("#departmentId").val(data.departmentid);
+						$("#departmentName").val(data.departmentname);
+						$("#tel").val(data.departmenttelephone);
+						$("#addr").val(data.departmentaddress);
+					},
+					error : function(data) {
+						console.log(data)
+					}
+				});
+			});
 		</script>
 </body>
 </html>

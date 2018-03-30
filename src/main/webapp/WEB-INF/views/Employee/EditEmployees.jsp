@@ -106,6 +106,7 @@
 						var selectOption;
 						<!--通过ID获得员工信息 / -->
 						$.ajax({
+							type : "POST",
 							url : "${ctx}/employeeControl/getEmployeeById",
 							data : {
 								ID : ID
@@ -128,6 +129,7 @@
 						});
 						<!--部门下拉列表-->
 						$.ajax({
+							type : "POST",
 							url : "${ctx}/DepartmentControl/getAllDepartment",
 							type : "GET",
 							success : function(data) {

@@ -12,14 +12,15 @@ import com.example.oa.domain.CarInfo;
 import com.example.oa.service.CarService;
 
 @Controller
-@RequestMapping(value="/carInfoControl")
+@RequestMapping(value = "/carInfoControl")
 public class CarInfoControl {
 	private Logger log = Logger.getLogger(CarInfoControl.class);
 	@Autowired
 	private CarService carService;
-	@RequestMapping(value="/getAllCarIfo")
+
+	@RequestMapping(value = "/getAllCarIfo")
 	@ResponseBody
-	public List<CarInfo> getAllCarIfo(){
+	public List<CarInfo> getAllCarIfo() {
 		List<CarInfo> allCarInfo = null;
 		try {
 			allCarInfo = carService.getallCarInfo();
@@ -29,4 +30,51 @@ public class CarInfoControl {
 		}
 		return allCarInfo;
 	}
+	
+	@RequestMapping(value="/getCarinfoById")
+	@ResponseBody
+	public CarInfo getCarinfoById(Integer ID) {
+		CarInfo carInfo = new CarInfo();
+		try {
+			carInfo = carService.selectCarInfoById(ID);
+		} catch (Exception e) {
+			log.info("请求车辆信息时出现异常，请稍后重试");
+			e.printStackTrace();
+		}
+		return carInfo;
+	}
+	@RequestMapping(value="/updateCarinfo")
+	@ResponseBody
+	public String updateCarinfo(CarInfo carInfo) {
+		boolean isupdate = false;
+		try {
+			isupdate = carService.updateCarInfo(carInfo);
+		} catch (Exception e) {
+			log.info("修改车辆信息时出现异常，请稍后重试");
+			e.printStackTrace();
+		}
+		if (isupdate) {
+			return "SUCCESS";
+		}
+		return "ERROR";
+	}
+	
+	@RequestMapping(value="/deleteCarinfo")
+	@ResponseBody
+	public String deleteCarinfo(Integer ID) {
+		boolean isdelete = false;
+		CarInfo carInfo = new CarInfo();
+		carInfo.setCarid(ID);
+		try {
+			isdelete = carService.deleteCarInfo(carInfo);
+		} catch (Exception e) {
+			log.info("删除车辆信息时出现异常，请稍后重试");
+			e.printStackTrace();
+		}
+		if (isdelete) {
+			return "SUCCESS";
+		}
+		return "ERROR";
+	}
+	
 }

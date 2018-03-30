@@ -23,7 +23,7 @@
 						<label for="carId" class="col-sm-2 control-label">车辆编号</label>
 						<div class="col-sm-10">
 							<input type="number" class="form-control" id="carId"
-								placeholder="车辆" readonly="readonly">
+								placeholder="员工编号" readonly="readonly">
 						</div>
 					</div>
 
@@ -31,7 +31,7 @@
 						<label for="carName" class="col-sm-2 control-label">名称</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="carName"
-								placeholder="名称">
+								placeholder="员工账号" readonly="readonly">
 						</div>
 					</div>
 
@@ -39,7 +39,7 @@
 						<label for="carNumber" class="col-sm-2 control-label">车牌号</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="carNumber"
-								placeholder="牌号">
+								placeholder="员工姓名" readonly="readonly">
 						</div>
 					</div>
 
@@ -47,12 +47,8 @@
 						<label for="carprice" class="col-sm-2 control-label">价格</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="carprice"
-								placeholder="价格">
+								placeholder="密码" readonly="readonly">
 						</div>
-					</div>
-					<div class="form-group">
-						<button type="button"
-							class="btn btn-default btn-block btn-primary" onClick="commit()">提交</button>
 					</div>
 				</form>
 			</div>
@@ -64,10 +60,8 @@
 		<script src="${ctx }/assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			var ID = '${ID}';
-
+			console.log("编号为" + ID)
 			$(document).ready(function() {
-				var selectOption;
-				<!--通过ID获得员工信息 / -->
 				$.ajax({
 					type : "POST",
 					url : "${ctx}/carInfoControl/getCarinfoById",
@@ -85,33 +79,6 @@
 					}
 				});
 			});
-
-			<!--提交修改后的数据-->
-			function commit() {
-				var id = $("#carId").val();
-				var name = $("#carName").val();
-				var num = $("#carNumber").val();
-				var price = $("#carprice").val();
-				$
-						.ajax({
-							type : "POST",
-							url : "${ctx}/carInfoControl/updateCarinfo",
-							data : {
-								carid : id,
-								carname : name,
-								carnumber : num,
-								carprice : price,
-							},
-							success : function(data) {
-								if (data == "SUCCESS") {
-									var index = parent.layer
-											.getFrameIndex(window.name); //先得到当前iframe层的索引
-									window.parent.location.reload();
-									parent.layer.close(index); //再执行关闭
-								}
-							}
-						});
-			}
 		</script>
 </body>
 </html>

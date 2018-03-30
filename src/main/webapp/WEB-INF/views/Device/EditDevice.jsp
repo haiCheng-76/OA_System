@@ -77,6 +77,7 @@
 						var selectOption;
 						<!--通过ID获得员工信息 / -->
 						$.ajax({
+							type : "POST",
 							url : "${ctx}/deviceControl/getDeviceById",
 							data : {
 								ID : ID
@@ -103,6 +104,7 @@
 				var man = $("#manufacture").val();
 				$
 						.ajax({
+							type : "POST",
 							url : "${ctx}/deviceControl/updateDevice",
 							data : {
 								deviceid : id,

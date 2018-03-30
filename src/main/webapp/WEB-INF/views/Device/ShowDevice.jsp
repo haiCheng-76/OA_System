@@ -71,6 +71,7 @@
 				$.ajax({
 					url : "${ctx}/deviceControl/getDeviceById",
 					data : {
+						type : "POST",
 						ID : ID
 					},
 					success : function(data) {

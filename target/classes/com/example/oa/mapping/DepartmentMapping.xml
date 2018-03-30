@@ -23,7 +23,7 @@
 		parameterType="java.lang.Integer"
 		resultType="com.example.oa.domain.Department">
 		SELECT
-		d.departmentname,d.departmenttelephone,d.departmentaddress
+		d.departmentid,d.departmentname,d.departmenttelephone,d.departmentaddress
 		from
 		department d
 		WHERE d.departmentid=#{id}
