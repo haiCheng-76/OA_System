@@ -1,5 +1,6 @@
 package com.example.oa.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,11 @@ import java.util.Date;
  * @author 龙海成
  *
  */
-public class Borrow_device {
+public class Borrow_device implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3168585830535165401L;
 	private int borrow_device_id;
 	private int borrow_device_deviceid;
 	private int employeeid;

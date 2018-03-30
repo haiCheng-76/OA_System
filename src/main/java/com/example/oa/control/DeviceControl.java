@@ -12,7 +12,7 @@ import com.example.oa.domain.Device;
 import com.example.oa.service.DeviceService;
 
 @Controller
-@RequestMapping(value = "deviceControl")
+@RequestMapping(value = "/deviceControl")
 public class DeviceControl {
 	private Logger log = Logger.getLogger(DeviceControl.class);
 	@Autowired
@@ -34,6 +34,21 @@ public class DeviceControl {
 			e.printStackTrace();
 		}
 		return listDevice;
+	}
+	
+	@RequestMapping(value="/addDevice")
+	@ResponseBody
+	public String addDevice(Device device) {
+		boolean isadded = false;
+		try {
+			isadded  = deviceService.addDevice(device);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (isadded) {
+			return "SUCCESS";
+		}
+		return "ERROR";
 	}
 	
 	/**

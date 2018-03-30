@@ -1,12 +1,18 @@
 package com.example.oa.domain;
 
+import java.io.Serializable;
+
 /**
  * 部门信息表
  *
  * @author 龙海成
  *
  */
-public class Department {
+public class Department implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1252119587166195921L;
 	private int departmentid;
 	private String departmentname;
 	private String departmenttelephone;

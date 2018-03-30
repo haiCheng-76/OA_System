@@ -27,6 +27,10 @@
 </head>
 <body>
 	<jsp:include page="/Top.jsp"></jsp:include>
+	<div>
+		<button style="margin-left: 220px" type="button"
+			class="btn btn-primary btn-default " onclick="add()">新增</button>
+	</div>
 	<table id="listEmployee"
 		class="table table-border table-hover table-bg table-sort" width="95%">
 		<thead>
@@ -73,7 +77,8 @@
 												columnDefs : [
 														{
 															orderable : false,
-															targets : [ 1, 3, 4 ]
+															targets : [ 1, 3,
+																	4, 5 ]
 														},
 														{
 															targets : 4,
@@ -104,7 +109,12 @@
 															}
 														} ],
 											});
+
 						});
+		//添加员工
+		function add() {
+			layer_show('新增', '${ctx}/pageControl/toaddEmployee.htm', '500', '');
+		}
 		//查看
 		function show(id) {
 			layer_show('查看', '${ctx}/pageControl/toShowEmployee.htm?ID=' + id,
@@ -129,11 +139,12 @@
 							ID : id
 						},
 						success : function(data) {
-							if(data == "SUCCESS") {
-							var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-							window.parent.location.reload();
-							parent.layer.close(index); //再执行关闭
-							} 
+							if (data == "SUCCESS") {
+								var index = parent.layer
+										.getFrameIndex(window.name); //先得到当前iframe层的索引
+								window.parent.location.reload();
+								parent.layer.close(index); //再执行关闭
+							}
 						},
 						error : function(request, textStatus) {
 							layer.alert('错误', {

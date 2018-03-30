@@ -32,10 +32,17 @@ public class PageControl {
 		mav.addObject("ID", ID);
 		return mav;
 	}
-
+	@RequestMapping(value = "/toaddCarinfo.htm")
+	public String toaddCarinfo() {
+		return "CarInfo/addCarinfo";
+	}
 	@RequestMapping(value = "/toEmployeePage.htm")
 	public String toEmployeePage() {
 		return "Employee/ListEmployees";
+	}
+	@RequestMapping(value = "/toaddEmployee.htm")
+	public String toaddEmployee() {
+		return "Employee/addEmployee";
 	}
 
 	@RequestMapping(value = "/toShowEmployee.htm")
@@ -57,6 +64,10 @@ public class PageControl {
 	@RequestMapping(value = "/toDepartmentPage.htm")
 	public String toDepartmentPage() {
 		return "Department/ListDepartment";
+	}
+	@RequestMapping(value = "/toaddDepartment.htm")
+	public String toaddDepartment() {
+		return "Department/addDepartment";
 	}
 
 	@RequestMapping(value = "/toShowDepartment.htm")
@@ -83,6 +94,10 @@ public class PageControl {
 	@RequestMapping(value = "/toDevicePage.htm")
 	public String toDevicePage() {
 		return "Device/ListDevice";
+	}
+	@RequestMapping(value = "/toaddDevice.htm")
+	public String toaddDevice() {
+		return "Device/addDevice";
 	}
 
 	@RequestMapping(value = "/toShowDevice.htm")

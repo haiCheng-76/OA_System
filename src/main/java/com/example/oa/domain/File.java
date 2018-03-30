@@ -1,12 +1,18 @@
 package com.example.oa.domain;
 
+import java.io.Serializable;
+
 /**
  * 文件信息表
  * 
  * @author 龙海成
  *
  */
-public class File {
+public class File  implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6127202511164646819L;
 	private int fileid;
 	private String filename;
 	private double filesize;

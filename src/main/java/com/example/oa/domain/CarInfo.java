@@ -1,12 +1,18 @@
 package com.example.oa.domain;
 
+import java.io.Serializable;
+
 /**
  * 车辆信息表
  * 
  * @author 龙海成
  *
  */
-public class CarInfo {
+public class CarInfo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5450669591927023925L;
 	private int carid;
 	private String carname;
 	private String carnumber;// 车牌号

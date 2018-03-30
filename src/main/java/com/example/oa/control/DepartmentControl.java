@@ -33,7 +33,21 @@ public class DepartmentControl {
 		}
 		return listDepartment;
 	}
-
+	
+	@RequestMapping(value="/addDepartment")
+	@ResponseBody
+	public String addDepartment(Department  d) {
+		boolean isadded = false;
+		try {
+			isadded =  departmentService.addDepartment(d);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (isadded) {
+			return "SUCCESS";
+		}
+		return "ERROR";
+	}
 	@RequestMapping(value = "/getDepartmentById")
 	@ResponseBody
 	public Department getDepartmentById(Integer ID) {

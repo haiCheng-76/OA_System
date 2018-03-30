@@ -3,8 +3,8 @@
 <mapper namespace="com.example.oa.dao.DeviceDao">
 	<insert id="addDevice" parameterType="com.example.oa.domain.Device">
 		insert into device
-		(devicename,deviceprice,devicenumber)
-		values(#{devicename},#{deviceprice},#{devicenumber})
+		(devicename,deviceprice,devicenumber,manufacture)
+		values(#{devicename},#{deviceprice},#{devicenumber},#{manufacture})
 	</insert>
 	<update id="updateDevice" parameterType="com.example.oa.domain.Device">
 		update device set

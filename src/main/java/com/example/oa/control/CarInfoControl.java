@@ -30,8 +30,23 @@ public class CarInfoControl {
 		}
 		return allCarInfo;
 	}
-	
-	@RequestMapping(value="/getCarinfoById")
+
+	@RequestMapping(value = "/addCarIfo")
+	@ResponseBody
+	public String addCarIfo(CarInfo carInfo) {
+		boolean isadded = false;
+		try {
+			isadded = carService.addCarInfo(carInfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (isadded) {
+			return "SUCCESS";
+		}
+		return "ERROR";
+	}
+
+	@RequestMapping(value = "/getCarinfoById")
 	@ResponseBody
 	public CarInfo getCarinfoById(Integer ID) {
 		CarInfo carInfo = new CarInfo();
@@ -43,7 +58,8 @@ public class CarInfoControl {
 		}
 		return carInfo;
 	}
-	@RequestMapping(value="/updateCarinfo")
+
+	@RequestMapping(value = "/updateCarinfo")
 	@ResponseBody
 	public String updateCarinfo(CarInfo carInfo) {
 		boolean isupdate = false;
@@ -58,8 +74,8 @@ public class CarInfoControl {
 		}
 		return "ERROR";
 	}
-	
-	@RequestMapping(value="/deleteCarinfo")
+
+	@RequestMapping(value = "/deleteCarinfo")
 	@ResponseBody
 	public String deleteCarinfo(Integer ID) {
 		boolean isdelete = false;
@@ -76,5 +92,5 @@ public class CarInfoControl {
 		}
 		return "ERROR";
 	}
-	
+
 }

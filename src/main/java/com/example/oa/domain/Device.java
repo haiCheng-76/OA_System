@@ -1,12 +1,18 @@
 package com.example.oa.domain;
 
+import java.io.Serializable;
+
 /**
  * 设备信息表
  * 
  * @author 龙海成
  *
  */
-public class Device {
+public class Device implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2122214321771489638L;
 	private int deviceid;
 	private String devicename;
 	private double deviceprice;

@@ -1,6 +1,5 @@
 package com.example.oa.control;
 
-
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -15,14 +14,14 @@ import com.example.oa.service.EmployeeService;
 @Controller
 @RequestMapping(value = "/employeeControl")
 public class EmployeeControl {
-	private Logger log  = Logger.getLogger(EmployeeControl.class);
+	private Logger log = Logger.getLogger(EmployeeControl.class);
 	@Autowired
 	private EmployeeService employeeService;
 
 	@RequestMapping(value = "/isuer")
 	@ResponseBody
 	public String isUser(String account, String password, int role) {
-		log.info("用户名:"+account+"密码"+password+";角色"+role);
+		log.info("用户名:" + account + "密码" + password + ";角色" + role);
 		String str = "";
 		boolean hasuser = false;
 		try {
@@ -73,11 +72,10 @@ public class EmployeeControl {
 		return "ERROR";
 	}
 
-	@RequestMapping(value = "/addEmployee.htm")
-	public String addEmployee() {
-		String msg = "";
-		Employee e = new Employee();
-		boolean isadd =false;
+	@RequestMapping(value = "/addEmployee")
+	@ResponseBody
+	public String addEmployee(Employee e) {
+		boolean isadd = false;
 		try {
 			isadd = employeeService.addEmployee(e);
 			log.info("添加用户成功");
@@ -86,12 +84,11 @@ public class EmployeeControl {
 			e1.printStackTrace();
 		}
 		if (isadd) {
-			msg = "";
-		} else {
-			msg = "";
+			return "SUCCESS";
 		}
-		return msg;
+		return "ERROR";
 	}
+
 	@RequestMapping(value = "/getallEmoloyee")
 	@ResponseBody
 	public List<Employee> getallEmoloyee() {
@@ -105,21 +102,21 @@ public class EmployeeControl {
 		}
 		return listEmployee;
 	}
-	
-	@RequestMapping(value="/getEmployeeById")
+
+	@RequestMapping(value = "/getEmployeeById")
 	@ResponseBody
-	public Employee getEmployeeById(@RequestParam(value="ID",required=false) Integer id) {
+	public Employee getEmployeeById(@RequestParam(value = "ID", required = false) Integer id) {
 		Employee resp = new Employee();
 		try {
 			resp = employeeService.selectEmployeeById(id);
 		} catch (Exception e) {
-			log.info("获取编号为"+id+"的员工信息时出现异常，请稍后重试");
+			log.info("获取编号为" + id + "的员工信息时出现异常，请稍后重试");
 			e.printStackTrace();
 		}
 		return resp;
 	}
-	
-	@RequestMapping(value="/updateEmployee")
+
+	@RequestMapping(value = "/updateEmployee")
 	@ResponseBody
 	public String updateEmployee(Employee e) {
 		boolean isupdate = false;

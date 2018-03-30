@@ -24,6 +24,9 @@
 </head>
 <body>
 	<jsp:include page="/Top.jsp"></jsp:include>
+		<div>
+		<button style="margin-left: 220px " type="button" class="btn btn-primary btn-default " onclick="add()">新增</button>	
+	</div>
 	<table id="listDevice"
 		class="table table-border table-hover table-bg table-sort" width="95%">
 		<thead>
@@ -87,12 +90,15 @@
 														} ],
 											});
 						});
+		function add() {
+			layer_show('新增', '${ctx}/pageControl/toaddDevice.htm','500', '');
+		}
 		function show(id) {
 			layer_show('查看', '${ctx}/pageControl/toShowDevice.htm?ID=' + id,
 					'500', '');
 		}
 		function edit(id) {
-			layer_show('查看', '${ctx}/pageControl/toEditDevice.htm?ID=' + id,
+			layer_show('编辑', '${ctx}/pageControl/toEditDevice.htm?ID=' + id,
 					'500', '');
 		}
 		function del(id) {

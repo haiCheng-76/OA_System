@@ -22,6 +22,9 @@
 </head>
 <body>
 	<jsp:include page="/Top.jsp"></jsp:include>
+		<div>
+		<button style="margin-left: 220px " type="button" class="btn btn-primary btn-default " onclick="add()">新增</button>	
+	</div>
 	<table id="listFile"
 		class="table table-border table-hover table-bg table-sort" width="95%">
 		<thead>
