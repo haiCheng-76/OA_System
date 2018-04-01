@@ -145,4 +145,8 @@ public class PageControl {
 		mav.setViewName("File/ShowFile");
 		return mav;
 	}
+	@RequestMapping(value="/toforgetpage")
+	public String toforgetpage() {
+		return "forgetPwd";
+	}
 }

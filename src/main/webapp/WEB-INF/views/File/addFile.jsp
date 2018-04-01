@@ -65,7 +65,7 @@
 
 		function commit() {
 			//加载层
-			var index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+			var index = layer.load(2, {shade: false}); //0代表加载的风格，支持0-2
 			var uploader = $("#uploader").val();
 			var file = $("#file")[0].files[0];
 			var form = new FormData();

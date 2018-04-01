@@ -23,7 +23,11 @@
 	type="text/css">
 <link href="${ctx}/assets/css/signin.css" rel="stylesheet"
 	type="text/css">
-
+<script type="text/javascript" charset="utf8"
+	src="${ctx }/assets/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="${ctx }/assets/js/main.js"></script>
+<!-- layer -->
+<script type="text/javascript" src="${ctx }/assets/layer/layer.js"></script>
 </head>
 
 
@@ -100,9 +104,9 @@
 
 
 
-	<div class="login-extra">
-		<a href="#">忘记密码</a>
-	</div>
+<!-- 	<div class="login-extra">
+		<a href="javascript:forgetPwd()">忘记密码</a>
+	</div> -->
 	<div>
 		<h3 class="msg"></h3>
 	</div>
@@ -111,6 +115,10 @@
 	<script src="${ctx}/assets/js/bootstrap.js"></script>
 	<script src="${ctx}/assets/js/signin.js"></script>
 	<script type="text/javascript">
+	//忘记密码
+	function forgetPwd() {
+		layer_show('修改密码', '${ctx}/pageControl/toforgetpage', '500', '');
+	}
 		function login() {
 		var account = $("#account").val().trim();
 		var password = $("#password").val().trim();
@@ -133,7 +141,7 @@
 					}
 				},
 				error : function(data) {
-					alert("系统错误");
+					alert("系统错误,请稍后重试！");
 				}
 			});
 		}

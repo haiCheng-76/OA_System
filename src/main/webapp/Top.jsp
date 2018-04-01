@@ -32,8 +32,7 @@
 							data-toggle="dropdown"><i class="icon-user"></i>帮助 <b
 								class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:;">个人信息</a></li>
-								<li><a href="javascript:;">注销</a></li>
+								<li><a href="${ctx }/index.jsp">注销</a></li>
 							</ul></li>
 					</ul>
 				</div>
