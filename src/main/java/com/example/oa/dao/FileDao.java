@@ -13,4 +13,5 @@ public interface FileDao {
 	File selectFileById(File file);
 
 	List<File> getallFile();
+	String getFileLocation(Integer ID);
 }

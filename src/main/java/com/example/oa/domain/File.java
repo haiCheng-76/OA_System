@@ -1,6 +1,7 @@
 package com.example.oa.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 文件信息表
@@ -16,22 +17,24 @@ public class File  implements Serializable{
 	private int fileid;
 	private String filename;
 	private double filesize;
-	private String fileuploadtime;
+	private Date fileuploadtime;
 	private int employee_id;
+	private String uploaderName;
 	private String file_location;
 
 	public File() {
 	}
 
-	public File(int fileid, String filename, double filesize, String fileuploadtime, int employee_id,
-			String file_location) {
-		this.fileid = fileid;
-		this.filename = filename;
-		this.filesize = filesize;
-		this.fileuploadtime = fileuploadtime;
-		this.employee_id = employee_id;
-		this.file_location = file_location;
+	
+	public String getUploaderName() {
+		return uploaderName;
 	}
+
+
+	public void setUploaderName(String uploaderName) {
+		this.uploaderName = uploaderName;
+	}
+
 
 	public int getFileid() {
 		return fileid;
@@ -57,11 +60,11 @@ public class File  implements Serializable{
 		this.filesize = filesize;
 	}
 
-	public String getFileuploadtime() {
+	public Date getFileuploadtime() {
 		return fileuploadtime;
 	}
 
-	public void setFileuploadtime(String fileuploadtime) {
+	public void setFileuploadtime(Date fileuploadtime) {
 		this.fileuploadtime = fileuploadtime;
 	}
 
@@ -81,4 +84,11 @@ public class File  implements Serializable{
 		this.file_location = file_location;
 	}
 
+
+	@Override
+	public String toString() {
+		return "File [fileid=" + fileid + ", filename=" + filename + ", filesize=" + filesize + ", fileuploadtime="
+				+ fileuploadtime + ", employee_id=" + employee_id + ", file_location=" + file_location + "]";
+	}
+	
 }

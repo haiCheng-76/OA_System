@@ -10,8 +10,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
-	<bean id="DateSource"
-		class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="DateSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<!-- 加载驱动 -->
 		<property name="driverClassName" value="${DRIVER}" />
 		<!-- url -->
@@ -22,8 +21,7 @@
 		<property name="password" value="${PASSWORD}" />
 	</bean>
 	<!-- 整合mybatis框架 -->
-	<bean id="SqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 配置数据源 -->
 		<property name="dataSource" ref="DateSource" />
 		<!-- 配置扫描mapping文件 -->
@@ -31,15 +29,20 @@
 			name="mapperLocations" />
 	</bean>
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
-	<bean id="MapperScannerConfigurer"
-		class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	<bean id="MapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.example.oa.dao" />
-		<property name="sqlSessionFactoryBeanName"
-			value="SqlSessionFactory" />
+		<property name="sqlSessionFactoryBeanName" value="SqlSessionFactory" />
 	</bean>
 	<!-- 配置事务 -->
 	<bean id="transactionmanager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="DateSource" />
+	</bean>
+	<!-- 配置文件上传解析器 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="maxUploadSize" value="10485760000" />
+		<property name="maxInMemorySize" value="40960" />
 	</bean>
 </beans>

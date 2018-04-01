@@ -32,14 +32,17 @@ public class PageControl {
 		mav.addObject("ID", ID);
 		return mav;
 	}
+
 	@RequestMapping(value = "/toaddCarinfo.htm")
 	public String toaddCarinfo() {
 		return "CarInfo/addCarinfo";
 	}
+
 	@RequestMapping(value = "/toEmployeePage.htm")
 	public String toEmployeePage() {
 		return "Employee/ListEmployees";
 	}
+
 	@RequestMapping(value = "/toaddEmployee.htm")
 	public String toaddEmployee() {
 		return "Employee/addEmployee";
@@ -65,6 +68,7 @@ public class PageControl {
 	public String toDepartmentPage() {
 		return "Department/ListDepartment";
 	}
+
 	@RequestMapping(value = "/toaddDepartment.htm")
 	public String toaddDepartment() {
 		return "Department/addDepartment";
@@ -95,6 +99,7 @@ public class PageControl {
 	public String toDevicePage() {
 		return "Device/ListDevice";
 	}
+
 	@RequestMapping(value = "/toaddDevice.htm")
 	public String toaddDevice() {
 		return "Device/addDevice";
@@ -119,5 +124,25 @@ public class PageControl {
 	@RequestMapping(value = "/toCarPage.htm")
 	public String toCarPage() {
 		return "CarInfo/ListCarInfo";
+	}
+
+	@RequestMapping(value = "/toaddFile")
+	public String toaddFile() {
+		return "File/addFile";
+	}
+
+	@RequestMapping(value = "/toeditFile")
+	public ModelAndView toeditFile(String ID) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("ID", ID);
+		mav.setViewName("File/EditFile");
+		return mav;
+	}
+	@RequestMapping(value = "/toshowFile")
+	public ModelAndView toshowFile(String ID) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("ID", ID);
+		mav.setViewName("File/ShowFile");
+		return mav;
 	}
 }
