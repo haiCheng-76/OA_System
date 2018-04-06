@@ -10,3 +10,5 @@
 * 车辆管理
 
 数据库文件包含在resource文件夹中
+
+如果有什么建议，请邮箱联系我：longhaicheng10.foxmail.com
